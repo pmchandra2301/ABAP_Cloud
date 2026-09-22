@@ -1,0 +1,11 @@
+projection;
+strict ( 2 );
+
+define behavior for ZC_MaterialRequest alias MaterialRequest
+{
+  use create;
+  use update;
+  use delete;
+  use action SubmitPayload;
+}
+

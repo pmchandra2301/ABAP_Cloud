@@ -1,0 +1,5 @@
+@EndUserText.label: 'Material inbound request service'
+define service ZUI_MATERIALREQUEST {
+  expose ZC_MaterialRequest as MaterialRequest;
+}
+

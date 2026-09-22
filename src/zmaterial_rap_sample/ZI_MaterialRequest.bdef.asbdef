@@ -1,0 +1,26 @@
+managed implementation in class ZBP_I_MATERIALREQUEST unique;
+strict ( 2 );
+
+define behavior for ZI_MaterialRequest alias MaterialRequest
+persistent table zt_mat_req
+lock master
+authorization master ( instance )
+etag master LocalLastChanged
+{
+  create;
+  update;
+  delete;
+
+  field ( readonly ) RequestUUID, Status, ExternalMaterial, Message,
+    CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChanged;
+
+  validation validateRequest on save
+  {
+    create;
+    update;
+    field MaterialType, IndustrySector, BaseUnit, Description;
+  }
+
+  action SubmitPayload parameter ZI_MaterialPayload result [1] $self;
+}
+
